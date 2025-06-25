@@ -1,3 +1,12 @@
 from django.shortcuts import render
+from .models import Category, Dish
 
-# Create your views here.
+
+def menu(request):
+    categories = Category.objects.all()
+
+    context = {
+        "categories": categories
+    }
+
+    return render(request, "menu.html", context)

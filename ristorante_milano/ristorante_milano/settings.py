@@ -60,7 +60,7 @@ ROOT_URLCONF = 'ristorante_milano.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'ristorante_milano/web/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
