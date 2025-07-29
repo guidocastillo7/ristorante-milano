@@ -1,6 +1,7 @@
 django==5.2
 fastapi[standard]
 psycopg[binary]
+psycopg2
 dj-database-url
 python-decouple
 sqlmodel
