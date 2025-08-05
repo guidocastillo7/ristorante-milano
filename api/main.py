@@ -1,13 +1,13 @@
 """
-Hasta aqui todo me va funcionando, puedo leer los datos de la bbdd
-Ahora tengo que estructurar bien el proyecto por carpetas
-Crear los modelos para mapear cada tabla e ir creando los routers
+Quede creando el router para orders, ahora tengo que organizar:
+la seguridad con la autenticacion
+los schemas (ver video explicativo)
 """
 
 from typing import Annotated, List # Quiero ver la explicacion para que sirven estas librerias
 
 from fastapi import Depends, FastAPI
-from routers import menu, users
+from routers import menu, users, orders
 
 
 app = FastAPI()
@@ -17,6 +17,8 @@ app = FastAPI()
 app.include_router(menu.category_router)
 app.include_router(menu.dish_router)
 app.include_router(users.user_router)
+app.include_router(orders.order_router)
+app.include_router(orders.order_item_router)
 
 
 @app.get("/")
