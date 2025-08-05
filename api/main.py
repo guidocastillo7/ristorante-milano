@@ -7,7 +7,7 @@ Crear los modelos para mapear cada tabla e ir creando los routers
 from typing import Annotated, List # Quiero ver la explicacion para que sirven estas librerias
 
 from fastapi import Depends, FastAPI
-from routers import menu
+from routers import menu, users
 
 
 app = FastAPI()
@@ -16,6 +16,7 @@ app = FastAPI()
 # Routers
 app.include_router(menu.category_router)
 app.include_router(menu.dish_router)
+app.include_router(users.user_router)
 
 
 @app.get("/")
