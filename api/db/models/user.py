@@ -6,3 +6,6 @@ class User(SQLModel, table=True):
     __tablename__ = "auth_user"
     id: int = Field(primary_key=True)
     username: str
+    first_name: str
+    last_name: str
+    email:str
