@@ -51,6 +51,20 @@ async def create_category(
     return db_category
 
 
+@category_router.delete("/{category_id}")
+async def delete_category(
+    category_id: int,
+    session: SessionDep
+):
+    category = session.get(Category, category_id)
+    if not category:
+        raise HTTPException(status_code=404, detail="Category not found")
+    session.delete(category)
+    session.commit()
+
+    return {"message": f"Category '{category.name}' deleted succesfully"}
+
+
 # Dish endpoints
 @dish_router.get("/", response_model=List[Dish])
 async def get_dishes(
