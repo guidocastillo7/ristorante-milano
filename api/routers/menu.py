@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from sqlmodel import select
 from db.models.menu import Category, Dish
+from db.schemas.menu import CategoryRead, CategoryCreate
 from db.client import SessionDep
 from typing import List
 
@@ -12,7 +13,7 @@ dish_router = APIRouter(prefix="/dishes",
 
 
 # Category endpoints
-@category_router.get("/", response_model=List[Category])
+@category_router.get("/", response_model=List[CategoryRead])
 async def get_categories(
     session: SessionDep,
     offset: int = 0,
@@ -23,6 +24,19 @@ async def get_categories(
     ).all()
 
     return categories
+
+
+@category_router.post("/", response_model=CategoryRead)
+async def create_category(
+    category: CategoryCreate,
+    session: SessionDep
+):
+    db_category = Category.model_validate(category)
+    session.add(db_category)
+    session.commit()
+    session.refresh(db_category)
+
+    return db_category
 
 
 # Dish endpoints
