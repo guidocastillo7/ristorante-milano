@@ -1,5 +1,5 @@
 from fastapi import Depends
-from typing import Annotated, List
+from typing import Annotated
 from sqlmodel import Session, create_engine
 from decouple import config
 
