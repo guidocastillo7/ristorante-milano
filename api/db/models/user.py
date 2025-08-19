@@ -8,4 +8,5 @@ class User(SQLModel, table=True):
     username: str
     first_name: str
     last_name: str
-    email:str
+    email: str
+    password: str
