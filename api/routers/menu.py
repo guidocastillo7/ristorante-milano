@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from sqlmodel import select
 from db.models.menu import Category, Dish
 from db.schemas.menu import CategoryRead, CategoryCreate
@@ -24,6 +24,18 @@ async def get_categories(
     ).all()
 
     return categories
+
+
+@category_router.get("/{category_id}", response_model=CategoryRead)
+async def get_category(
+    category_id: int,
+    session: SessionDep
+):
+    category = session.get(Category, category_id)
+    if not category:
+        raise HTTPException(status_code=404, detail="Category not found")
+
+    return category
 
 
 @category_router.post("/", response_model=CategoryRead)
