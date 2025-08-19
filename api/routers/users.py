@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from sqlmodel import select
 from db.models.user import User
-from db.schemas.user import UserRead
+from db.schemas.user import UserRead, UserCreate
 from db.client import SessionDep
 from typing import List
 
@@ -20,3 +20,16 @@ async def get_users(
     ).all()
 
     return users
+
+
+@user_router.post("/", response_model=UserRead)
+async def create_user(
+    user: UserCreate,
+    session: SessionDep
+):
+    db_user = User.model_validate(user)
+    session.add(db_user)
+    session.commit()
+    session.refresh(db_user)
+
+    return db_user
