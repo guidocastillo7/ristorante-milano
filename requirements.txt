@@ -5,3 +5,4 @@ psycopg2
 dj-database-url
 python-decouple
 sqlmodel
+gunicorn
