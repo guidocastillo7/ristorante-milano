@@ -3,5 +3,5 @@
 set -o errexit
 
 pip install -r ./requirements.txt
-python manage.py ristorante_milano/collectstatic --no-input
-python manage.py ristorante_milano/migrate
+python ristorante_milano/manage.py collectstatic --no-input
+python ristorante_milano/manage.py migrate
