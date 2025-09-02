@@ -10,7 +10,3 @@ def menu(request):
     }
 
     return render(request, "menu.html", context)
-
-
-def home(request):
-    return render(request, "home.html")
