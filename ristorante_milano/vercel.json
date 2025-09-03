@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "ristorante_milano/ristorante_milano/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "50mb" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "ristorante_milano/staticfiles/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "ristorante_milano/ristorante_milano/wsgi.py"
+      }
+    ]
+  }
