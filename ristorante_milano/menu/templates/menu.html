@@ -45,4 +45,17 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var accordions = document.querySelectorAll('.accordion-collapse');
+            accordions.forEach(function(acc) {
+                acc.addEventListener('shown.bs.collapse', function (event) {
+                    var header = acc.previousElementSibling;
+                    if (header) {
+                        header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}
