@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "ristorante_milano/ristorante_milano/wsgi.py",
+        "src": "ristorante_milano/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "50mb" }
       }
@@ -14,7 +14,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "ristorante_milano/ristorante_milano/wsgi.py"
+        "dest": "ristorante_milano/wsgi.py"
       }
     ]
   }
