@@ -1,6 +1,5 @@
 django==5.2
-psycopg[binary]
-psycopg2
+psycopg
 dj-database-url
 python-decouple
 whitenoise
